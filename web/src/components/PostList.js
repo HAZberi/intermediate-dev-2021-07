@@ -4,12 +4,12 @@ import sortPosts from '../helpers/sortPosts';
 import filterByAuthor from '../helpers/filterByAuthor';
 
 const PostList = ({ posts, authorId }) => {
-  const chronologicallySortedPosts = authorId
+  const revChronoSortedPosts = authorId
     ? sortPosts(filterByAuthor(posts, authorId))
     : sortPosts(posts);
   return (
     <>
-      {chronologicallySortedPosts.map((post) => (
+      {revChronoSortedPosts.map((post) => (
         <PostSnippet key={post.id} post={post} />
       ))}
     </>
