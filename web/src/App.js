@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import localApi from './api/localApi';
 import AuthorList from './components/AuthorList';
 import PostList from './components/PostList';
+import Loading from './components/Loading';
+import Error from './components/Error';
 import { Button, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -36,14 +38,19 @@ const App = () => {
 
   const [posts, setPosts] = useState([]);
   const [selectedAuthorID, setSelectedAuthorID] = useState('');
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const getPostData = async () => {
+    setLoading(true);
     try {
       const response = await localApi.get('/posts');
       const { data } = response;
       setPosts(data);
+      setLoading(false);
     } catch (err) {
-      console.log(err);
+      setError(true);
+      setLoading(false);
     }
   };
 
@@ -51,7 +58,11 @@ const App = () => {
     getPostData();
   }, []);
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : error ? (
+    <Error />
+  ) : (
     <Grid container={true} className={classes.appBackground} spacing={2}>
       <Grid item={true} xs={8}>
         <Paper
