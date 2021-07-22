@@ -7,15 +7,11 @@ const PostList = ({ posts, authorId }) => {
   const chronologicallySortedPosts = authorId
     ? sortPosts(filterByAuthor(posts, authorId))
     : sortPosts(posts);
-
-  console.log(chronologicallySortedPosts);
   return (
     <>
-      <div>
-        {chronologicallySortedPosts.map((post) => (
-          <PostSnippet key={post.id} post={post} />
-        ))}
-      </div>
+      {chronologicallySortedPosts.map((post) => (
+        <PostSnippet key={post.id} post={post} />
+      ))}
     </>
   );
 };
