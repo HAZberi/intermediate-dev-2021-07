@@ -6,7 +6,7 @@ import PostList from './components/PostList';
 const App = () => {
   // eslint-disable-next-line no-unused-vars
   const [posts, setPosts] = useState([]);
-  const [selectedAuthor, setSelectedAuthor] = useState('');
+  const [selectedAuthorID, setSelectedAuthorID] = useState('');
 
   const getPostData = async () => {
     try {
@@ -24,8 +24,8 @@ const App = () => {
 
   return (
     <>
-      <PostList posts={posts} author={selectedAuthor} />
-      <AuthorList posts={posts} setAuthor={setSelectedAuthor} />
+      <PostList posts={posts} authorId={selectedAuthorID} />
+      <AuthorList posts={posts} setAuthorId={setSelectedAuthorID} />
     </>
   );
 };

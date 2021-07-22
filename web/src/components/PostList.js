@@ -1,12 +1,18 @@
 import React from 'react';
 import PostSnippet from './PostSnippet';
+import sortPosts from '../helpers/sortPosts';
+import filterByAuthor from '../helpers/filterByAuthor';
 
-const PostList = ({ posts }) => {
-  console.log(posts);
+const PostList = ({ posts, authorId }) => {
+  const chronologicallySortedPosts = authorId
+    ? sortPosts(filterByAuthor(posts, authorId))
+    : sortPosts(posts);
+
+  console.log(chronologicallySortedPosts);
   return (
     <>
       <div>
-        {posts.map((post) => (
+        {chronologicallySortedPosts.map((post) => (
           <PostSnippet key={post.id} post={post} />
         ))}
       </div>
