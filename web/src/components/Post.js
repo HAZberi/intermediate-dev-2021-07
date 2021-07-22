@@ -19,26 +19,24 @@ const useStyles = makeStyles((theme) => ({
 const Post = ({ post }) => {
   const classes = useStyles();
   return (
-    <>
-      <Grid
-        container={true}
-        direction="column"
-        alignItems="center"
-        className={classes.postContainer}
-      >
-        <Grid item={true}>
-          <Typography variant="h2" align="center" className={classes.postTitle}>
-            {post.title}
-          </Typography>
-          <Typography variant="subtitle1" align="center">
-            By {post.author.name}
-          </Typography>
-        </Grid>
-        <Grid item={true} className={classes.contentSpacing}>
-          <ReactMarkdown>{post.body}</ReactMarkdown>
-        </Grid>
+    <Grid
+      container={true}
+      direction="column"
+      alignItems="center"
+      className={classes.postContainer}
+    >
+      <Grid item={true}>
+        <Typography variant="h2" align="center" className={classes.postTitle}>
+          {post.title}
+        </Typography>
+        <Typography variant="subtitle1" align="center">
+          By {post.author.name}
+        </Typography>
       </Grid>
-    </>
+      <Grid item={true} className={classes.contentSpacing}>
+        <ReactMarkdown>{post.body}</ReactMarkdown>
+      </Grid>
+    </Grid>
   );
 };
 

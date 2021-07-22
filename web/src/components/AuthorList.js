@@ -31,9 +31,8 @@ const AuthorList = ({ posts, setAuthorId }) => {
           <List aria-label="authors list">
             <Divider />
             {uniqueAuthors.map((author) => (
-              <>
+              <div key={author.id}>
                 <ListItem
-                  key={author.id}
                   button={true}
                   onClick={() => {
                     setAuthorId(author.id);
@@ -42,7 +41,7 @@ const AuthorList = ({ posts, setAuthorId }) => {
                   <ListItemText primary={author.name} />
                 </ListItem>
                 <Divider />
-              </>
+              </div>
             ))}
           </List>
         </Grid>
